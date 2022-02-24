@@ -14,7 +14,7 @@ sudo systemctl status mongod
 
 * Run Express Backend:
 ```
-cd backend/
+cd backend
 npm install
 npm start
 ```
@@ -22,7 +22,7 @@ npm start
 * Run React Frontend:
 ```
 cd frontend
-npm install/
+npm install
 npm start
 ```
 
