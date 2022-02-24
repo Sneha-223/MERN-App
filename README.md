@@ -1,7 +1,6 @@
 # MERN Stack App
 
 ### Sneha Raghava Raju
-### Roll No: 2020101125
 
 ## Running the code
 
