@@ -30,12 +30,10 @@ const Edit = (props) => {
 
   const [name, setName] = useState(user.name);
   const [age, setAge] = useState(user.age);
-  const [batch, setBatch] = useState(user.batch);
+  // const [batch, setBatch] = useState(user.batch);
 
   const [manager, setManager] = useState(user.manager);
   const [shop, setShopName] = useState(user.shop);
-  const [OpenTime, setOpenTime] = useState(user.OpenTime);
-  const [CloseTime, setCloseTime] = useState(user.CloseTime);
 
   const [type, setType] = useState(user.type);
 
@@ -59,19 +57,9 @@ const Edit = (props) => {
     setAge(event.target.value);
   };
 
-  const onChangeBatch = (event) => {
-    setBatch(event.target.value);
-  };
 
   const onChangeManager = (event) => {
     setManager(event.target.value);
-  };
-
-  const onChangeOpenTime = (event) => {
-    setOpenTime(event.target.value);
-  };
-  const onChangeCloseTime = (event) => {
-    setCloseTime(event.target.value);
   };
 
   const onSubmit = (event) => {
@@ -85,10 +73,7 @@ const Edit = (props) => {
       number: number,
       age: age,
       manager: manager,
-      batch: batch,
       shop: shop,
-      OpenTime: OpenTime,
-      CloseTime: CloseTime,
       type: user.type,
     };
 
@@ -120,7 +105,9 @@ const Edit = (props) => {
       </Grid>
       <Grid item xs={12}>
         <TextField
+          id="standard-password-input"
           label="Password"
+          type="password"
           variant="outlined"
           value={password}
           onChange={onChangePassword}
@@ -155,16 +142,7 @@ const Edit = (props) => {
           />
         </Grid>
       }
-      {user.type == "Buyer" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Batch"
-            variant="outlined"
-            value={batch}
-            onChange={onChangeBatch}
-          />
-        </Grid>
-      }
+      
 
       {user.type == "Vendor" &&
         <Grid item xs={12}>
@@ -186,26 +164,7 @@ const Edit = (props) => {
           />
         </Grid>
       }
-      {user.type == "Vendor" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Open-Time"
-            variant="outlined"
-            value={OpenTime}
-            onChange={onChangeOpenTime}
-          />
-        </Grid>
-      }
-      {user.type == "Vendor" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Close-Time"
-            variant="outlined"
-            value={CloseTime}
-            onChange={onChangeCloseTime}
-          />
-        </Grid>
-      }
+      
 
       <Grid item xs={12}>
         <Button variant="contained" onClick={onSubmit}>

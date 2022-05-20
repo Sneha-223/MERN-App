@@ -84,16 +84,19 @@ const Edit = (props) => {
             </Grid>
 
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Food-Type</InputLabel>
+                <InputLabel id="demo-simple-select-label">Product-Type</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={type}
-                    label="Food-Type"
+                    label="Product-Type"
                     onChange={onChangeType}
                 >
-                    <MenuItem value={"Veg"}>Veg</MenuItem>
-                    <MenuItem value={"Non-Veg"}>Non-Veg</MenuItem>
+                    <MenuItem value={"Beauty"}>Beauty</MenuItem>
+                    <MenuItem value={"Tech"}>Tech</MenuItem>
+                    <MenuItem value={"Fashion"}>Fashion</MenuItem>
+                    <MenuItem value={"Home"}>Home</MenuItem>
+                    <MenuItem value={"Stationery"}>Stationery</MenuItem>
 
                 </Select>
             </FormControl>

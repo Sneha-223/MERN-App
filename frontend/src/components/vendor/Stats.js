@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import TextField from "@mui/material/TextField";
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -64,7 +72,7 @@ const Orders = (props) => {
         if (order.status == "Completed") {
             k3 = k3 + 1;
         }
-        else if (order.status == "Accepted" || order.status == "Placed" || order.status == "Cooking" || order.status == "Ready For Pickup") {
+        else if (order.status == "Placed" || order.status == "Dispatched" || order.status == "In Transit" || order.status == "Delivered") {
             k2 = k2 + 1;
         }
     });
@@ -73,32 +81,42 @@ const Orders = (props) => {
 
         <div>
 
-            <Grid container align={"center"} spacing={2}>
+            <Grid container align={"center"}>
 
-                <Grid item xs={12}>
-                    <h2>STATISTICS</h2>
-                </Grid>
+            <TableContainer sx={{ maxWidth: 500 }} component={Paper}>
+                <Table sx={{ minWidth: 100 }} aria-label="simple table">
+
+                    <TableBody>
+
+                        <TableRow sx={{
+                            [`& .${tableCellClasses.root}`]: { borderBottom: "none" }
+                        }}>
+                            <TableCell style={{ fontWeight: "bold" }}>Orders Placed:</TableCell>
+                            <TableCell>{k1}</TableCell>
+                        </TableRow>
+
+                        <TableRow sx={{
+                            [`& .${tableCellClasses.root}`]: { borderBottom: "none" }
+                        }}>
+                            <TableCell style={{ fontWeight: "bold" }}>Pending Orders:</TableCell>
+                            <TableCell>{k2}</TableCell>
+                        </TableRow>
+
+                        <TableRow sx={{
+                            [`& .${tableCellClasses.root}`]: { borderBottom: "none" }
+                        }}>
+                            <TableCell style={{ fontWeight: "bold" }}>Completed Orders:</TableCell>
+                            <TableCell >{k3}</TableCell>
+                        </TableRow>
+
+
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
             </Grid>
 
-            <Grid container>
-
-            <Grid item xs={12}>
-                    {a[0]},{a[1]},{a[2]},{a[3]},{a[4]},{a[5]}
-                </Grid>
-
-                <Grid item xs={12}>
-                    <h3>Orders Placed:</h3>{k1}
-                </Grid>
-
-                <Grid item xs={12}>
-                    <h3>Pending Orders:</h3>{k2}
-                </Grid>
-
-                <Grid item xs={12}>
-                    <h3>Completed Orders:</h3>{k3}
-                </Grid>
-
-            </Grid>
+            
         </div>
     );
 };

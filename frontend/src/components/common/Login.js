@@ -3,6 +3,14 @@ import axios from "axios";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+
+import login_image from "../../Images/login.svg"
+
+import './Login.css';
+
 
 const Login = (props) => {
     const [email, setEmail] = useState("");
@@ -51,35 +59,82 @@ const Login = (props) => {
     };
 
     return (
-        <Grid container align={"center"} spacing={2}>
 
-            <Grid item xs={12}>
-                <h2>LOGIN</h2>
-            </Grid>
+        <div className="login-page-container">
 
-            <Grid item xs={12}>
-                <TextField
-                    label="Email"
-                    variant="outlined"
-                    value={email}
-                    onChange={onChangeEmail}
-                />
-            </Grid>
-            <Grid item xs={12}>
-                <TextField
-                    label="Password"
-                    variant="outlined"
-                    value={password}
-                    onChange={onChangePassword}
-                />
-            </Grid>
 
-            <Grid item xs={12}>
-                <Button variant="contained" onClick={onSubmit}>
-                    Login
-                </Button>
-            </Grid>
-        </Grid>
+            <div className="login-page-element">
+
+                <img src={login_image} className="login-img" alt="login image" />
+
+            </div>
+
+
+            <div className="login-page-element">
+
+
+
+                <Container component="main" maxWidth="xs">
+
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                    >
+
+                        <Typography component="h1" variant="h5">
+                            Sign In
+                        </Typography>
+
+                        <Box component="form" sx={{ mt: 3 }}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        id="email"
+                                        name="email"
+                                        autoComplete="email"
+                                        label="Email"
+                                        variant="outlined"
+                                        value={email}
+                                        onChange={onChangeEmail}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        name="password"
+
+                                        id="standard-password-input"
+                                        label="Password"
+                                        type="password"
+                                        autoComplete="current-password"
+                                        variant="outlined"
+                                        value={password}
+                                        onChange={onChangePassword}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Button variant="outlined" type="submit" fullWidth sx={{ mt: 3, mb: 2 }} onClick={onSubmit}>
+                                        Login
+                                    </Button>
+                                </Grid>
+
+                            </Grid>
+                            
+                        </Box>
+                    </Box>
+                </Container>
+
+            </div>
+
+
+        </div>
+
     );
 };
 export default Login;

@@ -148,7 +148,7 @@ const UsersList = (props) => {
                   <TableCell>Password</TableCell>
                   <TableCell>Number</TableCell>
                   <TableCell>Age</TableCell>
-                  <TableCell>Batch</TableCell>
+                  {/* <TableCell>Batch</TableCell> */}
                   <TableCell>Manager</TableCell>
                   <TableCell>Shop Name</TableCell>
                   <TableCell>Open Time</TableCell>
@@ -167,11 +167,11 @@ const UsersList = (props) => {
                     <TableCell>{user.password}</TableCell>
                     <TableCell>{user.number}</TableCell>
                     <TableCell>{user.age}</TableCell>
-                    <TableCell>{user.batch}</TableCell>
+                    {/* <TableCell>{user.batch}</TableCell> */}
                     <TableCell>{user.manager}</TableCell>
                     <TableCell>{user.shop}</TableCell>
-                    <TableCell>{user.OpenTime}</TableCell>
-                    <TableCell>{user.CloseTime}</TableCell>
+                    {/* <TableCell>{user.OpenTime}</TableCell>
+                    <TableCell>{user.CloseTime}</TableCell> */}
                     <TableCell>{user.wallet}</TableCell>
                     <TableCell>{user.type}</TableCell>
                   </TableRow>

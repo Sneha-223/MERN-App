@@ -3,8 +3,17 @@ import axios from "axios";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+
 
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+
+import add_product_image from "../../Images/add_product.svg"
+
+import '../common/Login.css';
+
 
 const Products = (props) => {
 
@@ -16,7 +25,7 @@ const Products = (props) => {
 
     axios.get('http://localhost:4000/user/' + userID)
       .then(response => {
-        console.log(response.data)
+        // console.log(response.data)
         setUser(response.data)
       })
       .catch(error => {
@@ -25,7 +34,7 @@ const Products = (props) => {
       })
   }, [])
 
-  
+
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -64,7 +73,7 @@ const Products = (props) => {
     setName("");
     setPrice("");
     setRating("");
-    setType("Veg");
+    setType("Beauty");
   };
 
   const onSubmit = (event) => {
@@ -90,76 +99,118 @@ const Products = (props) => {
   };
 
   return (
-    <Grid container align={"center"} spacing={2}>
 
-      <Grid item xs={12}>
-        <TextField
-          label="Name"
-          variant="outlined"
-          value={name}
-          onChange={onChangeName}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          label="Price"
-          variant="outlined"
-          value={price}
-          onChange={onChangePrice}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          label="Rating"
-          variant="outlined"
-          value={rating}
-          onChange={onChangeRating}
-        />
-      </Grid>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Food-Type</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={type}
-          label="Food-Type"
-          onChange={onChangeType}
-        >
-          <MenuItem value={"Veg"}>Veg</MenuItem>
-          <MenuItem value={"Non-Veg"}>Non-Veg</MenuItem>
+    <div className="login-page-container">
+      <div className="login-page-element">
 
-        </Select>
-      </FormControl>
+        <img src={add_product_image} className="login-img" alt="login image" />
 
-      <Grid item xs={12}>
-        <TextField
-          label="Enter tags"
-          variant="outlined"
-          value={tag}
-          onChange={(event) => {
-            setTag(event.target.value);
-            console.log("tag: " + event.target.value);
+      </div>
 
-          }}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <Button variant="contained" 
-        onClick={() => {
-          setTags([...tags, tag]);
-          console.log("TAGS: " + tags);
-        }}
-        >
-          Add Tag
-        </Button>
-      </Grid>
+      <div className="login-page-element">
 
-      <Grid item xs={12}>
-        <Button variant="contained" onClick={onSubmit}>
-          Add Product
-        </Button>
-      </Grid>
-    </Grid>
+        <Container component="main" maxWidth="xs">
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+
+            <Typography component="h1" variant="h5">
+              Add Product
+            </Typography>
+
+            <Box component="form" /*noValidate onSubmit={Submit}*/ sx={{ mt: 3 }}>
+              <Grid container align={"center"} spacing={2}>
+
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Name"
+                    variant="outlined"
+                    value={name}
+                    onChange={onChangeName}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Price"
+                    variant="outlined"
+                    value={price}
+                    onChange={onChangePrice}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Rating"
+                    variant="outlined"
+                    value={rating}
+                    onChange={onChangeRating}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField select label="Select" sx={{ minWidth: 264 }}
+                    fullWidth
+                    value={type}
+                    label="Product-Type"
+                    onChange={onChangeType}
+                  >
+                    <MenuItem value={"Beauty"}>Beauty</MenuItem>
+                    <MenuItem value={"Tech"}>Tech</MenuItem>
+                    <MenuItem value={"Fashion"}>Fashion</MenuItem>
+                    <MenuItem value={"Home"}>Home</MenuItem>
+                    <MenuItem value={"Stationery"}>Stationery</MenuItem>
+                    
+                  </TextField>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Enter tags"
+                    variant="outlined"
+                    value={tag}
+                    onChange={(event) => {
+                      setTag(event.target.value);
+                      console.log("tag: " + event.target.value);
+
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button variant="outlined"
+                    onClick={() => {
+                      setTags([...tags, tag]);
+                      // console.log("TAGS: " + tags);
+                    }}
+                  >
+                    Add Tag
+                  </Button>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Button variant="outlined" onClick={onSubmit}>
+                    Add Product
+                  </Button>
+                </Grid>
+              </Grid>
+
+            </Box>
+          </Box>
+        </Container>
+
+      </div>
+
+
+    </div >
+
+
   );
 };
 

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import "./App.css";
 
-import Home from "./Home";
+import Buyer_Home from "./Buyer_Home";
 import Navbar from "./Navbar";
 import Profile from "../users/Profile";
 import Logout from "../common/Logout";
@@ -28,7 +28,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Buyer_Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="edit" element={<Edit />} />

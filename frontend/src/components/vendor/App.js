@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import "./App.css";
 
-import Home from "./Home";
+import Home from "./Vendor_Home";
 import Navbar from "./Navbar";
 import Profile from "../users/Profile";
 import Logout from "../common/Logout";

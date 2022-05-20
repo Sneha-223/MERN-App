@@ -8,17 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import Autocomplete from "@mui/material/Autocomplete";
-import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
-
-import SearchIcon from "@mui/icons-material/Search";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -66,24 +55,23 @@ const Orders = (props) => {
             .post("http://localhost:4000/order/status/" + event, newOrder)
             .then((response) => {
                 alert("Edited\t" + response.data);
-                console.log(response.data);
-                //console.log('http://localhost:4000/user/edit' + userID)
-                console.log("here");
+                // console.log(response.data);
+                // console.log("here");
             });
     };
 
     const nextStage = (event) => {
 
         if (event.status == "Placed") {
-            stat = "Accepted"
+            stat = "Dispatched"
         };
 
-        if (event.status == "Accepted") {
-            stat = "Cooking"
+        if (event.status == "Dispatched") {
+            stat = "In Transit"
         };
 
-        if (event.status == "Cooking") {
-            stat = "Ready For Pickup"
+        if (event.status == "In Transit") {
+            stat = "Delivered"
         };
 
         const newOrder = {
@@ -95,9 +83,8 @@ const Orders = (props) => {
             .post("http://localhost:4000/order/status/" + event._id, newOrder)
             .then((response) => {
                 alert("Edited\t" + response.data);
-                console.log(response.data);
-                //console.log('http://localhost:4000/user/edit' + userID)
-                console.log("here");
+                // console.log(response.data);
+                // console.log("here");
             });
     };
 
@@ -142,7 +129,7 @@ const Orders = (props) => {
                                         <TableCell>{order.quantity}</TableCell>
                                         <TableCell>{order.shop}</TableCell>
                                         <TableCell>{order.status}</TableCell>
-                                        <TableCell><a href="#" onClick={() => { nextStage(order) }}>Next stage</a> | <a href="#" onClick={() => { rejectOrder(order._id) }}>Reject</a></TableCell>
+                                        <TableCell><a href="#" onClick={() => { nextStage(order) }}>Next stage</a>  <a href="#" onClick={() => { rejectOrder(order._id) }}>Reject</a></TableCell>
 
                                     </TableRow>
                                 ))}

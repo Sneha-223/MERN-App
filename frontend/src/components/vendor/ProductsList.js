@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
+
 import Button from "@mui/material/Button";
 
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+
+import img from "./../../Images/logo.png";
+
 
 const ProductsList = (props) => {
 
@@ -26,7 +25,7 @@ const ProductsList = (props) => {
 
         axios.get('http://localhost:4000/user/' + userID)
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 setUser(response.data)
             })
             .catch(error => {
@@ -55,19 +54,56 @@ const ProductsList = (props) => {
 
     }
 
+    const displayProducts = (product, index) => {
+        try {
+            return (
+
+              <div className='item'>
+                <img src={img} alt="item"></img>
+                
+                <div className='item-head_desc'>
+                    <p className='head_desc-name'>{product.name}</p>
+                    <p className='head_desc-info'>
+                        <small>{product.description}</small>
+                    </p>
+
+                    <div>{product.tags.map(entry =>
+                        <small>{entry} </small>
+                        )}
+                    </div>
+                </div>
+                
+                <div className='item-foot_desc'>
+                    <span className='foot_desc-price'>₹{product.price}</span>
+                    {/* <Link to={"/edit/" + product._id}>edit</Link> */}
+                </div>
+                    
+                <div className='item-foot_desc'>
+                    <div className="btn btn-outline-primary"><Link to={"/edit/" + product._id}>edit</Link></div> <a href="#" className="btn btn-outline-primary" onClick={() => { deleteProduct(product._id) }}>delete</a>
+                </div>
+
+
+              </div>
+            );
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
 
         <div>
 
             <Grid container align={"center"} spacing={2}>
 
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                     <h2>DASHBOARD</h2>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12}>
-                    <Button variant="contained" onClick={onSubmit}>
-                        Add Product
+                    <Button variant="outlined" onClick={onSubmit}>
+                        Add New Product
                     </Button>
                 </Grid>
             </Grid>
@@ -78,42 +114,17 @@ const ProductsList = (props) => {
 
                 </Grid>
 
-                <Grid item xs={12} md={9} lg={9}>
-                    <Paper>
-                        <Table size="small">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Sr No.</TableCell>
-                                    <TableCell>Name</TableCell>
-                                    <TableCell>Price</TableCell>
-                                    <TableCell>Rating</TableCell>
-                                    <TableCell>Type</TableCell>
-                                    <TableCell>Shop</TableCell>
-                                    <TableCell>Tags</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {products.map((product, ind) => (
-                                    <TableRow key={ind}>
-                                        <TableCell>{ind}</TableCell>
-                                        <TableCell>{product.name}</TableCell>
-                                        <TableCell>{product.price}</TableCell>
-                                        <TableCell>{product.rating}</TableCell>
-                                        <TableCell>{product.type}</TableCell>
-                                        <TableCell>{product.shop}</TableCell>
-                                        {/* <TableCell>{product.tags}</TableCell>  */}
-                                        {console.log("list tags: ", product.tags)}
-                                        <div>{product.tags.map(entry =>
-                                            <div>{entry}</div>
-                                            )}
-                                            </div>
-                                        <TableCell><Link to={"/edit/" + product._id}>edit</Link> | <a href="#" onClick={() => { deleteProduct(product._id) }}>delete</a></TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </Paper>
-                </Grid>
+                <main>
+                {
+                    products.map((product, idx) => (
+                        <div>
+                            {displayProducts(product, idx)}
+                        </div>
+                    ))
+                }
+                </main>
+
+                
             </Grid>
         </div>
     );

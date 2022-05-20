@@ -1,0 +1,25 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 15%;
+}
+
+.imgContainer {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgb(171, 196, 231);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: center;
+    align-items: flex-end;
+
+    
+}
+img {
+    height: 200px;
+    width: 200px;
+}

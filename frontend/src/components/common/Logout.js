@@ -1,6 +1,8 @@
 import React from 'react'
 import Grid from "@mui/material/Grid";
 
+import 'bootstrap/dist/css/bootstrap.css';
+
 function Logout(props) {
     localStorage.removeItem('USER_ID')      //reseting user
     localStorage.setItem('USER_ID', "")
@@ -9,7 +11,9 @@ function Logout(props) {
 
             <Grid item xs={12}>
                 <h2>Logged out</h2>
-                <a href="/login"><p>Login page</p></a>
+                {/* <a href="/login"><p>Login page</p></a> */}
+
+                <a href="/" className="btn btn-outline-primary">Home Page</a>
             </Grid>
         </Grid>
     )

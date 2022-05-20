@@ -3,8 +3,16 @@ import axios from "axios";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import register_image from "../../Images/register.svg"
+
+import './Login.css';
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -14,13 +22,13 @@ const Register = (props) => {
 
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  const [batch, setBatch] = useState("");
+  // const [batch, setBatch] = useState("");
   const [wallet, setWallet] = useState("");
 
   const [manager, setManager] = useState("");
   const [shop, setShopName] = useState("");
-  const [OpenTime, setOpenTime] = useState("");
-  const [CloseTime, setCloseTime] = useState("");
+  // const [OpenTime, setOpenTime] = useState("");
+  // const [CloseTime, setCloseTime] = useState("");
 
   const [type, setType] = useState("");
 
@@ -44,9 +52,9 @@ const Register = (props) => {
     setAge(event.target.value);
   };
 
-  const onChangeBatch = (event) => {
-    setBatch(event.target.value);
-  };
+  // const onChangeBatch = (event) => {
+  //   setBatch(event.target.value);
+  // };
 
   const onChangeShopName = (event) => {
     setShopName(event.target.value);
@@ -56,12 +64,6 @@ const Register = (props) => {
     setManager(event.target.value);
   };
 
-  const onChangeOpenTime = (event) => {
-    setOpenTime(event.target.value);
-  };
-  const onChangeCloseTime = (event) => {
-    setCloseTime(event.target.value);
-  };
 
   const onChangeType = (event) => {
     setType(event.target.value);
@@ -75,10 +77,7 @@ const Register = (props) => {
     setNumber("");
     setAge("");
     setManager("");
-    setBatch("");
     setShopName("");
-    setOpenTime("");
-    setCloseTime("");
     setWallet("");
     setType("Buyer");
   };
@@ -94,10 +93,10 @@ const Register = (props) => {
       number: number,
       age: age,
       manager: manager,
-      batch: batch,
+      // batch: batch,
       shop: shop,
-      OpenTime: OpenTime,
-      CloseTime: CloseTime,
+      // OpenTime: OpenTime,
+      // CloseTime: CloseTime,
       wallet: 0,
       type: type,
     };
@@ -113,155 +112,151 @@ const Register = (props) => {
   };
 
   return (
-    <Grid container align={"center"} spacing={2}>
 
-      <Grid item xs={12}>
-        <h2>REGISTER</h2>
-      </Grid>
+    <div className="login-page-container">
 
-      <Grid item xs={12}>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">User-Type</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={type}
-            label="User-Type"
-            onChange={onChangeType}
+      <div className="login-page-element">
+
+        <img src={register_image} className="login-img" alt="login image" />
+
+      </div>
+
+      <div className="login-page-element">
+
+        <Container component="main" maxWidth="xs">
+
+          {/* <CssBaseline /> */}
+          <Box
+            sx={{
+              marginTop: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
           >
-            <MenuItem value={"Buyer"}>Buyer</MenuItem>
-            <MenuItem value={"Vendor"}>Vendor</MenuItem>
 
-          </Select>
-        </FormControl>
-      </Grid>
+              <Typography component="h1" variant="h5" sx={{alignItems: 'center'}}>
+                Sign Up
+              </Typography>
 
-      <Grid item xs={12}>
-        <TextField
-          label="Email"
-          variant="outlined"
-          value={email}
-          onChange={onChangeEmail}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          label="Password"
-          variant="outlined"
-          value={password}
-          onChange={onChangePassword}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          label="Number"
-          variant="outlined"
-          value={number}
-          onChange={onChangeNumber}
-        />
-      </Grid>
+            <Box component="form" sx={{ mt: 3 }}>
+            
+            <Grid container spacing={1}>
 
-      {type == "Buyer" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Name"
-            variant="outlined"
-            value={name}
-            onChange={onChangeName}
-          />
-        </Grid>
-      }
-      {type == "Buyer" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Age"
-            variant="outlined"
-            value={age}
-            onChange={onChangeAge}
-          />
-        </Grid>
-      }
-      {/* {type == "Buyer" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Batch"
-            variant="outlined"
-            value={batch}
-            onChange={onChangeBatch}
-          />
-        </Grid>
-      } */}
+          
+              <Grid item xs={12} >
 
-      {
-        type == "Buyer" &&
-        <Grid item xs={12}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Batch</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={batch}
-              label="Batch"
-              onChange={onChangeBatch}
-            >
-              <MenuItem value={"UG1"}>UG1</MenuItem>
-              <MenuItem value={"UG2"}>UG2</MenuItem>
-              <MenuItem value={"UG3"}>UG3</MenuItem>
-              <MenuItem value={"UG4"}>UG4</MenuItem>
-              <MenuItem value={"UG5"}>UG5</MenuItem>
+              <TextField select label="Select" sx={{ minWidth: 264 }}
+                fullWidth
+                value={type}
+                label="User-Type"
+                onChange={onChangeType}
+              >
+                
+                <MenuItem value={"Buyer"}>Buyer</MenuItem>
+                <MenuItem value={"Vendor"}>Vendor</MenuItem>
 
-            </Select>
-          </FormControl>
-        </Grid>
-      }
+              </TextField>
 
-      {type == "Vendor" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Manager"
-            variant="outlined"
-            value={manager}
-            onChange={onChangeManager}
-          />
-        </Grid>
-      }
-      {type == "Vendor" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Shop-Name"
-            variant="outlined"
-            value={name}
-            onChange={onChangeName}
-          />
-        </Grid>
-      }
-      {type == "Vendor" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Open-Time"
-            variant="outlined"
-            value={OpenTime}
-            onChange={onChangeOpenTime}
-          />
-        </Grid>
-      }
-      {type == "Vendor" &&
-        <Grid item xs={12}>
-          <TextField
-            label="Close-Time"
-            variant="outlined"
-            value={CloseTime}
-            onChange={onChangeCloseTime}
-          />
-        </Grid>
-      }
+              </Grid>
 
-      <Grid item xs={12}>
-        <Button variant="contained" onClick={onSubmit}>
-          Register
-        </Button>
-      </Grid>
-    </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Email"
+                  variant="outlined"
+                  value={email}
+                  onChange={onChangeEmail}
+                />
+              </Grid>
+              
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  
+                  variant="outlined"
+
+                  id="standard-password-input"
+                  label="Password"
+                  type="password"
+
+                  value={password}
+                  onChange={onChangePassword}
+                />
+              </Grid>
+              
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Number"
+                  variant="outlined"
+                  value={number}
+                  onChange={onChangeNumber}
+                />
+              </Grid>
+
+              {type == "Buyer" &&
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Name"
+                    variant="outlined"
+                    value={name}
+                    onChange={onChangeName}
+                  />
+                </Grid>
+              }
+              {type == "Buyer" &&
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Age"
+                    variant="outlined"
+                    value={age}
+                    onChange={onChangeAge}
+                  />
+                </Grid>
+              }
+
+              {type == "Vendor" &&
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Manager"
+                    variant="outlined"
+                    value={manager}
+                    onChange={onChangeManager}
+                  />
+                </Grid>
+              }
+              {type == "Vendor" &&
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Shop-Name"
+                    variant="outlined"
+                    value={name}
+                    onChange={onChangeName}
+                  />
+                </Grid>
+              }
+
+              <Grid item xs={12}>
+                <Button variant="outlined" type="submit" fullWidth sx={{ mt: 3, mb: 2 }} onClick={onSubmit}>
+                  Register
+                </Button>
+              </Grid>
+          
+
+            </Grid>
+            </Box>
+
+          </Box>
+        </Container>
+
+      </div>
+
+    </div>
   );
 };
 

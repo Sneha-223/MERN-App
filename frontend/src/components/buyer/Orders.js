@@ -31,7 +31,7 @@ const Orders = (props) => {
 
     const nextStage = (event) => {
 
-        if (event.status == "Ready For Pickup") {
+        if (event.status == "Delivered") {
             stat = "Completed"
         };
 
@@ -89,7 +89,7 @@ const Orders = (props) => {
                                         <TableCell>{order.quantity}</TableCell>
                                         <TableCell>{order.shop}</TableCell>
                                         <TableCell>{order.status}</TableCell>
-                                        {order.status=="Ready For Pickup" && <TableCell><a href="#" onClick={() => { nextStage(order) }}>Next stage</a></TableCell>}
+                                        {order.status=="Delivered" && <TableCell><a href="#" onClick={() => { nextStage(order) }}>Next stage</a></TableCell>}
                                         
                                     </TableRow>
                                 ))}
