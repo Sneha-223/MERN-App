@@ -7,6 +7,9 @@ const ProductSchema = new Schema({
 		type: String,
 		required: true
 	},
+	description: {
+		type: String
+	},
 	price: {
 		type: Number
 	},
@@ -15,7 +18,7 @@ const ProductSchema = new Schema({
 	},
 	type: {
 		type: String,
-		enum: ['Veg', 'Non-Veg']
+		enum: ['Beauty', 'Tech', 'Fashion', 'Home', 'Stationery']
 	},
 	shop: {
 		type: String,

@@ -17,7 +17,7 @@ const OrderSchema = new Schema({
     },
     status:{
         type: String,
-        enum: ['Placed', 'Accepted', 'Cooking', 'Ready For Pickup', 'Completed', 'Rejected']
+        enum: ['Placed', 'Dispatched', 'In Transit', 'Delivered', 'Completed', 'Rejected']
     },
     cost:{
         type: Number

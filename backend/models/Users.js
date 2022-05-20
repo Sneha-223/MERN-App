@@ -25,21 +25,21 @@ const UserSchema = new Schema({
 	age:{
 		type: Number
 	},
-	batch:{
-		type: String
-	},
+	// batch:{
+	// 	type: String
+	// },
 	manager:{
 		type: String
 	},
 	shop:{
 		type: String
 	},
-	OpenTime:{
-		type: String
-	},
-	CloseTime:{
-		type: String
-	},
+	// OpenTime:{
+	// 	type: String
+	// },
+	// CloseTime:{
+	// 	type: String
+	// },
 	type:{
 		type: String,
 		enum: ['Buyer', 'Vendor'] 

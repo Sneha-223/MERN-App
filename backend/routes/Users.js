@@ -16,7 +16,6 @@ router.get("/", function (req, res) {
     })
 });
 
-// NOTE: Below functions are just sample to show you API endpoints working, for the assignment you may need to edit them
 
 // POST request 
 // Add a user to db
@@ -28,11 +27,11 @@ router.post("/register", (req, res) => {
         number: req.body.number,
         date: req.body.date,
         age: req.body.age,
-        batch: req.body.batch,
+        // batch: req.body.batch,
         manager: req.body.manager,
         //shop: req.body.shop,
-        OpenTime: req.body.OpenTime,
-        CloseTime: req.body.CloseTime,
+        // OpenTime: req.body.OpenTime,
+        // CloseTime: req.body.CloseTime,
         wallet: req.body.wallet,
         type: req.body.type,
     });
@@ -105,11 +104,11 @@ router.post('/edit/:id', (req, res) => {
             user.email = req.body.email;
             user.number = req.body.number;
             user.age = req.body.age;
-            user.batch = req.body.batch;
+            // user.batch = req.body.batch;
             user.manager = req.body.manager;
             //user.shop = req.body.shop;
-            user.OpenTime = req.body.OpenTime;
-            user.CloseTime = req.body.CloseTime;
+            // user.OpenTime = req.body.OpenTime;
+            // user.CloseTime = req.body.CloseTime;
             user.type = req.body.type;
 
             user.save()
